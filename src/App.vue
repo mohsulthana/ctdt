@@ -1,10 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar color="green" class="flex-grow-0" app dark>
-      <v-app-bar-title>Coding Beauty</v-app-bar-title>
-    </v-app-bar>
     <v-navigation-drawer app width="320">
-      <v-list-item>
+      <v-list-item @click="routeTo('/')">
         <v-list-item-content>
           <v-img
             lazy-src="@/assets/ctdt.png"
@@ -15,31 +12,91 @@
         </v-list-item-content>
       </v-list-item>
       <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+        <div
+          @click="routeTo('existing-container')"
+          v-if="this.$route.path.includes('/existing-container')"
+        >
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-cog</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              Existing Container Terminal
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-row>
+                <v-col
+                  v-for="(value, index) in 8"
+                  :key="index"
+                  cols="12"
+                  sm="4"
+                >
 
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+                  <router-link
+                    tag="button"
+                    :to="{ name: 'stepper', query: { id: index }}"
+                    style="
+                      background-color: #0e2d61;
+                      padding: 1rem;
+                      text-align: center;
+                      color: white;
+                      border-radius: 4px;
+                    "
+                  >
+                    {{ `Step ${index + 1}` }}
+                  </router-link>
+                </v-col>
+              </v-row>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
+
+        <!-- New Container -->
+        <div v-else-if="this.$route.path.includes('/new-container')" @click="routeTo('new-container')">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-cog</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content> New Container Terminal </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-row>
+                <v-col
+                  v-for="(value, index) in 8"
+                  :key="index"
+                  cols="12"
+                  sm="4"
+                >
+                  <div
+                    style="
+                      background-color: #0e2d61;
+                      padding: 1rem;
+                      text-align: center;
+                      color: white;
+                      border-radius: 4px;
+                    "
+                  >
+                    {{ `Step ${index + 1}` }}
+                  </div>
+                </v-col>
+              </v-row>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
       </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <v-container>
-        <steps v-for="(value, index) in 2" :key="index" />
-      </v-container>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Steps from "./components/Steps.vue";
-
 export default {
-  components: { Steps },
   name: "App",
   data: () => ({
     items: [
@@ -48,5 +105,15 @@ export default {
       { title: "Settings", icon: "mdi-cog" },
     ],
   }),
+  methods: {
+    routeTo(args) {
+      this.$router.push(args);
+    },
+  },
+  computed: {
+    routerPath: function() {
+      return this.$router.currentRoute.path
+    }
+  }
 };
 </script>
