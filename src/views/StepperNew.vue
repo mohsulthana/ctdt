@@ -1,8 +1,7 @@
 <template>
   <div>
-    <v-stepper v-model="e1">
+    <v-stepper v-model="routerParams">
       <v-stepper-header>
-
         <v-stepper-step :complete="e1 > 1" step="1"> </v-stepper-step>
 
         <v-divider></v-divider>
@@ -120,6 +119,70 @@
                     "
                     :type="yardCraneWorkHourShow ? 'text' : 'password'"
                   ></v-text-field>
+                  <h4 class="my-4">Number of Equipments (unit)</h4>
+                  <v-row>
+                    <v-col>
+                      <v-text-field label="QCC" outlined></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="HMC"
+                        outlined
+                        value="3"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="RS"
+                        outlined
+                        value="2"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field label="SL" outlined></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="RTG"
+                        outlined
+                        value="5"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field label="RMG" outlined></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <h4 class="my-4">Yard Equipments Productivity (BCH)</h4>
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        label="RD"
+                        outlined
+                        value="7"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="SL"
+                        outlined
+                        value="7"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="RTG"
+                        outlined
+                        value="7"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="RMG"
+                        outlined
+                        value="7"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
                 </v-col>
               </v-row>
               <v-row>
@@ -653,6 +716,19 @@ export default {
   methods: {
     completed() {
       console.log("yes!");
+    },
+  },
+  computed: {
+    routerParams: {
+      get: function () {
+        return parseInt(this.$route.query.id);
+      },
+      set: function (args) {
+        return this.$router.push({
+          path: this.$route.path,
+          query: { id: args },
+        });
+      },
     },
   },
 };

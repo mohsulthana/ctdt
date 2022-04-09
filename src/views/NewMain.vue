@@ -8,7 +8,7 @@
           cols="12"
           sm="4"
         >
-          <steps :title="value.title" :subtitle="value.description" :link="'/new-container/stepper'"/>
+          <steps :title="value.title" :subtitle="value.description" :link="`/new-container/stepper?id=${index + 1}`"/>
         </v-col>
       </v-row>
     </v-container>
