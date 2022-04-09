@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Bar :chart-id="chartId" :dataset-id-key="chartId" :chart-options="chartOptions" :chart-data="chartData" :height="250" />
+    <Bar :chart-id="chartId" :dataset-id-key="chartId" :chart-options="chartOptions" :chart-data="chartData" :height="150" />
   </div>
 </template>
 

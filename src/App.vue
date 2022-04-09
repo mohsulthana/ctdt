@@ -117,3 +117,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.v-text-field__suffix {
+  color: #0E2D61;
+}
+</style>

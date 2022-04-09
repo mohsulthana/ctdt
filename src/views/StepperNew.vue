@@ -2,27 +2,27 @@
   <div>
     <v-stepper v-model="routerParams">
       <v-stepper-header>
-        <v-stepper-step :complete="e1 > 1" step="1"> </v-stepper-step>
+        <v-stepper-step :complete="routerParams > 1" step="1"> </v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 2" step="2"> </v-stepper-step>
+        <v-stepper-step :complete="routerParams > 2" step="2"> </v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 3" step="3"></v-stepper-step>
+        <v-stepper-step :complete="routerParams > 3" step="3"></v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 4" step="4"> </v-stepper-step>
+        <v-stepper-step :complete="routerParams > 4" step="4"> </v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 5" step="5"> </v-stepper-step>
+        <v-stepper-step :complete="routerParams > 5" step="5"> </v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 6" step="6"></v-stepper-step>
+        <v-stepper-step :complete="routerParams > 6" step="6"></v-stepper-step>
       </v-stepper-header>
 
       <v-stepper-items>
@@ -76,117 +76,6 @@
               </v-row>
               <v-row>
                 <v-col>
-                  <h2 class="text-center">Yard Assumptions</h2>
-                  <v-text-field
-                    label="Effective Yard Capacity"
-                    outlined
-                    suffix="TEU"
-                  ></v-text-field>
-                  <v-text-field
-                    label="Maximum Utilization"
-                    outlined
-                    suffix="%"
-                  ></v-text-field>
-                  <v-text-field
-                    label="Dwell Time"
-                    outlined
-                    suffix="days"
-                  ></v-text-field>
-                </v-col>
-                <v-col>
-                  <h2 class="text-center">Shore & Yard Crane Assumptions</h2>
-                  <v-text-field
-                    label="Share Crane Workhour/Year"
-                    outlined
-                    suffix="%"
-                    @click:append="
-                      shareCraneWorkHourShow = !shareCraneWorkHourShow
-                    "
-                    :append-icon="
-                      shareCraneWorkHourShow ? 'mdi-eye' : 'mdi-eye-off'
-                    "
-                    :type="shareCraneWorkHourShow ? 'text' : 'password'"
-                  ></v-text-field>
-                  <v-text-field
-                    label="Yard Crane Workhour/Year"
-                    outlined
-                    suffix="%"
-                    @click:append="
-                      yardCraneWorkHourShow = !yardCraneWorkHourShow
-                    "
-                    :append-icon="
-                      yardCraneWorkHourShow ? 'mdi-eye' : 'mdi-eye-off'
-                    "
-                    :type="yardCraneWorkHourShow ? 'text' : 'password'"
-                  ></v-text-field>
-                  <h4 class="my-4">Number of Equipments (unit)</h4>
-                  <v-row>
-                    <v-col>
-                      <v-text-field label="QCC" outlined></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="HMC"
-                        outlined
-                        value="3"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="RS"
-                        outlined
-                        value="2"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field label="SL" outlined></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="RTG"
-                        outlined
-                        value="5"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field label="RMG" outlined></v-text-field>
-                    </v-col>
-                  </v-row>
-                  <h4 class="my-4">Yard Equipments Productivity (BCH)</h4>
-                  <v-row>
-                    <v-col>
-                      <v-text-field
-                        label="RD"
-                        outlined
-                        value="7"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="SL"
-                        outlined
-                        value="7"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="RTG"
-                        outlined
-                        value="7"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field
-                        label="RMG"
-                        outlined
-                        value="7"
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
                   <h2 class="text-center">Get In & Out Assumptions</h2>
                   <v-text-field
                     label="Number of Get In"
@@ -220,7 +109,7 @@
                   ></v-text-field>
                 </v-col>
                 <v-col>
-                  <h2>Internal Truck Assumptions</h2>
+                  <h2 class="text-center">Internal Truck Assumptions</h2>
                   <v-text-field
                     label="Average Truck Cycle Time"
                     outlined
@@ -231,18 +120,14 @@
             </v-container>
           </v-card>
 
-          <v-btn color="primary" @click="e1 = 2"> Next </v-btn>
+          <v-btn color="primary" @click="routerParams += 1"> Submit </v-btn>
 
-          <v-btn text @click.native="route.back()"> Back </v-btn>
+          <v-btn text @click="routerParams -= 1"> Back </v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="2">
           <v-card elevation="0" class="mb-12">
-            <Bar
-              :chart-options="chartOptions"
-              :chart-data="currentChartData"
-              :height="250"
-            />
+            <chart :chartId="'new'" :chartData="chartData" />
             <v-text-field
               label="Terminal Capacity"
               value="501.072"
@@ -265,12 +150,11 @@
                 <v-btn color="secondary">See Detail</v-btn>
               </template>
             </v-text-field>
-            <v-btn>Status</v-btn>
           </v-card>
 
-          <v-btn color="primary" @click="e1 = 3"> Next </v-btn>
+          <v-btn color="primary" @click="routerParams += 1"> Next </v-btn>
 
-          <v-btn text> Cancel </v-btn>
+          <v-btn text @click="routerParams -= 1"> Cancel </v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="3">
@@ -278,8 +162,8 @@
             <v-container>
               <v-row>
                 <v-col>
-                  <h1>Target Container Terminal Capacity (TEUS)</h1>
-                  <h4 class="text-center">
+                  <h3>Target Container Terminal Capacity (TEUS)</h3>
+                  <h4 class="text-center font-italic">
                     To build your new container terminal with capacty of
                   </h4>
                 </v-col>
@@ -324,15 +208,15 @@
             </v-container>
           </v-card>
 
-          <v-btn color="primary" @click="e1 = 4"> Next </v-btn>
+          <v-btn color="primary" @click="routerParams += 1"> Next </v-btn>
 
-          <v-btn text> Cancel </v-btn>
+          <v-btn text @click="routerParams -= 1"> Cancel </v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="4">
           <v-card class="mb-12" elevation="0">
             <v-container>
-              <h1>Man Power Assumptions</h1>
+              <h2>Man Power Assumptions</h2>
               <v-row>
                 <v-col>
                   <v-text-field
@@ -362,81 +246,79 @@
                   ></v-text-field>
                 </v-col>
                 <v-col>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">
-                      Yard Operator Assistant (OA)
-                    </h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Yard Operator Assistant (OA)</h4>
+                    <v-radio-group row>
                       <v-radio label="No" value="radio-1"></v-radio>
                       <v-radio label="Yes" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">SC Operator</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>SC Operator</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Solo</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Solo</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Whisky</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Whisky</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">YC Operator</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>YC Operator</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Yard OA</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Yard OA</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">ITT Operator</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>ITT Operator</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Gate Officer</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Gate Officer</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Gate Inspector</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Gate Inspector</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Traffic Man</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Traffic Man</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
                   </div>
-                  <div class="d-flex justify-space-between">
-                    <h3 class="man-power-assumption">Planner</h3>
-                    <v-radio-group v-model="row" row>
+                  <div class="d-flex justify-space-between align-center">
+                    <h4>Planner</h4>
+                    <v-radio-group row>
                       <v-radio label="Permanent" value="radio-1"></v-radio>
                       <v-radio label="Contract" value="radio-2"></v-radio>
                     </v-radio-group>
@@ -444,9 +326,17 @@
                 </v-col>
               </v-row>
             </v-container>
+          </v-card>
 
+          <v-btn color="primary" @click="routerParams += 1"> Next </v-btn>
+
+          <v-btn text @click="routerParams -= 1"> Cancel </v-btn>
+        </v-stepper-content>
+
+        <v-stepper-content step="5">
+          <v-card elevation="0" class="mb-12">
             <v-container>
-              <h1>Equipment Assumptions</h1>
+              <h2>Equipment Assumptions</h2>
               <v-row>
                 <v-col>
                   <v-text-field
@@ -493,40 +383,180 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
+
               <v-row>
                 <v-col>
-                  <h1>Operation Cost Impact Estimation</h1>
-                  <div id="manpower-cost" class="my-6">
-                    <h3>Manpower Cost Gap Estimation / Year</h3>
-                    <v-text-field label="Cost Gap" outlined suffix="Rupiah">
-                      <template v-slot:append-outer>
-                        <v-btn color="secondary">See Detail</v-btn>
-                      </template>
-                    </v-text-field>
-                  </div>
+                  <h2>Yard Assumptions</h2>
+                  <v-text-field
+                    label="Tier Max in Storage Yard"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Stacking Area/Yard Area"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Berth Wide"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Pavement Type"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Investment Cost/m2"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                </v-col>
+                <v-col>
+                  <h2>Berth Assumptions</h2>
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        label="Structure Type"
+                        outlined
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="Inv Cost / M2"
+                        outlined
+                        suffix="meters"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
 
-                  <div id="fuel-cost" class="my-6">
-                    <h3>Fuel Cost Gap Estimation / Year</h3>
-                    <v-text-field label="Cost Gap" outlined suffix="Rupiah">
-                      <template v-slot:append-outer>
-                        <v-btn color="secondary">See Detail</v-btn>
-                      </template>
-                    </v-text-field>
-                  </div>
+                  <h2>Gate Assumptions</h2>
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        label="Inv Cost / m2 (Gate In)"
+                        outlined
+                        suffix="Rp/m2"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col>
+                      <v-text-field
+                        label="Inv Cost / M2 (Gate Out)"
+                        outlined
+                        suffix="Rp/m2"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+
+                  <h2>Weighing Scale</h2>
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        label="Inv Cost / m2 (Gate In)"
+                        outlined
+                        suffix="Rp/m2"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-col>
+              </v-row>
+
+              <h2>IT Infrastructure Assumptions</h2>
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    label="Gate In"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Gate Out"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Yard"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Berth"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                </v-col>
+                <v-col>
+                  <v-text-field
+                    label="Equipment (VMT)"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Equipment (Pager)"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Equipment (Handheld)"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Constrol Tower"
+                    outlined
+                    suffix="Rp/Unit"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-row>
+                <v-col>
+                  <h2>Investment Cost Impact Estimation Due To Improvements</h2>
+
+                  <h3>Equipment</h3>
+                  <v-text-field
+                    label="1 HMC, 2 RTG, 6 ITT"
+                    value="XXX.XXX.XXX"
+                    outlined
+                    suffix="Rupiah"
+                  ></v-text-field>
+
+                  <h3>Facility</h3>
+                  <v-text-field
+                    label="Yard"
+                    value="XXX.XXX.XXX"
+                    outlined
+                    suffix="Rupiah"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Berth"
+                    value="XXX.XXX.XXX"
+                    outlined
+                    suffix="Rupiah"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Gate"
+                    value="XXX.XXX.XXX"
+                    outlined
+                    suffix="Rupiah"
+                  ></v-text-field>
+
+                  <v-divider></v-divider>
+
+                  <v-text-field
+                    label="IT Infrastructure"
+                    value="XXX.XXX.XXX"
+                    outlined
+                    suffix="Rupiah"
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
           </v-card>
 
-          <v-btn color="primary" @click="e1 = 5"> Next </v-btn>
-
-          <v-btn text> Cancel </v-btn>
-        </v-stepper-content>
-
-        <v-stepper-content step="5">
-          <v-btn color="primary" @click="e1 = 6"> Next </v-btn>
-
-          <v-btn text> Cancel </v-btn>
+          <v-btn color="primary" @click="routerParams += 1"> Next </v-btn>
+          <v-btn text @click="routerParams -= 1"> Cancel </v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="6">
@@ -650,9 +680,8 @@
             </v-container>
           </v-card>
 
-          <v-btn color="primary" @click="e1 = 6"> Next</v-btn>
-
-          <v-btn text>Cancel</v-btn>
+          <v-btn color="primary" @click="routerParams += 1"> Complete</v-btn>
+          <v-btn text @click="routerParams -= 1">Cancel</v-btn>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -660,59 +689,47 @@
 </template>
 
 <script>
-import { Bar } from "vue-chartjs/legacy";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+import Chart from "@/components/Chart";
 
 export default {
-  components: { Bar },
-  data: () => ({
-    e1: this.$route.path,
-    currentChartData: {
-      labels: [
-        "Berth",
-        "Yard",
-        "Shore Crane",
-        "Yard Crane",
-        "Get In",
-        "Get Out",
-      ],
-      datasets: [
-        {
-          label: "Existing Container Terminal Capacity (TEUS)",
-          data: [416245, 393077, 375804, 412070, 573382, 573382],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
-          ],
-        },
-      ],
-    },
-    chartOptions: {
-      responsive: true,
-    },
-  }),
+  components: { Chart },
+  data() {
+    return {
+      e1: this.$route.path,
+      peakFactor: false,
+      teuShow: true,
+      shareCraneWorkHourShow: true,
+      yardCraneWorkHourShow: true,
+      chartData: {
+        labels: [
+          "Berth",
+          "Yard",
+          "Shore Crane",
+          "Yard Crane",
+          "Get In",
+          "Get Out",
+        ],
+        datasets: [
+          {
+            label: "Existing Container Terminal Capacity (TEUS)",
+            data: [416245, 393077, 375804, 412070, 573382, 573382],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(201, 203, 207, 0.2)",
+            ],
+          },
+        ],
+      },
+      chartOptions: {
+        responsive: true,
+      },
+    };
+  },
   methods: {
     completed() {
       console.log("yes!");
@@ -735,4 +752,29 @@ export default {
 </script>
 
 <style>
+h2 {
+  padding: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 10px;
+  color: white;
+  background-color: #30ccfd;
+}
+
+h3 {
+  padding: 5px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 10px;
+  color: #30ccfd;
+  background-color: #0e2d61;
+}
+
+h1 {
+  padding: 5px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-bottom: 10px;
+  color: #30ccfd;
+  background-color: #0e2d61;
+}
 </style>

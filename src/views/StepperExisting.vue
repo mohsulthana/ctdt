@@ -203,7 +203,7 @@
                     value="2"
                     suffix="unit"
                   ></v-text-field>
-                                    <v-text-field
+                  <v-text-field
                     label="Avg Process Time at Gate In"
                     outlined
                     value="100"
@@ -215,7 +215,7 @@
                     value="1,1"
                     suffix="days"
                   ></v-text-field>
-                                    <v-text-field
+                  <v-text-field
                     label="Number of Gate Out"
                     outlined
                     value="1"
@@ -227,7 +227,7 @@
                     value="60"
                     suffix="second/truck"
                   ></v-text-field>
-                                   <v-text-field
+                  <v-text-field
                     label="Transhipment Rotation"
                     outlined
                     value="0"
@@ -992,72 +992,75 @@ import Chart from "@/components/Chart";
 
 export default {
   components: { Chart },
-  data: () => ({
-    e1: 1,
-    yardOperatorAssistant: '',
-    scOperator: '',
-    solo: '',
-    whisky: '',
-    ycOperator: '',
-    yardOA: '',
-    ittOperator: '',
-    gateOfficer: '',
-    gateInspector: '',
-    trafficMan: '',
-    planner: '',
-    targetChartData: {
-      labels: [
-        "Berth",
-        "Yard",
-        "Shore Crane",
-        "Yard Crane",
-        "Get In",
-        "Get Out",
-      ],
-      datasets: [
-        {
-          data: [416245, 393077, 375804, 412070, 573382, 573382],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
-          ],
-        },
-      ],
-    },
-    currentChartData: {
-      labels: [
-        "Berth",
-        "Yard",
-        "Shore Crane",
-        "Yard Crane",
-        "Get In",
-        "Get Out",
-      ],
-      datasets: [
-        {
-          label: "Existing Container Terminal Capacity (TEUS)",
-          data: [416245, 393077, 375804, 412070, 573382, 573382],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(201, 203, 207, 0.2)",
-          ],
-        },
-      ],
-    },
-    teuShow: true,
-    shareCraneWorkHourShow: true,
-    yardCraneWorkHourShow: true,
-  }),
+  data() {
+    return {
+      e1: 1,
+      yardOperatorAssistant: "",
+      scOperator: "",
+      solo: "",
+      whisky: "",
+      ycOperator: "",
+      yardOA: "",
+      ittOperator: "",
+      gateOfficer: "",
+      gateInspector: "",
+      trafficMan: "",
+      planner: "",
+      targetChartData: {
+        labels: [
+          "Berth",
+          "Yard",
+          "Shore Crane",
+          "Yard Crane",
+          "Get In",
+          "Get Out",
+        ],
+        datasets: [
+          {
+            label: "Existing Container Terminal Capacity (TEUS)",
+            data: [416245, 393077, 375804, 412070, 573382, 573382],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(201, 203, 207, 0.2)",
+            ],
+          },
+        ],
+      },
+      currentChartData: {
+        labels: [
+          "Berth",
+          "Yard",
+          "Shore Crane",
+          "Yard Crane",
+          "Get In",
+          "Get Out",
+        ],
+        datasets: [
+          {
+            label: "Existing Container Terminal Capacity (TEUS)",
+            data: [416245, 393077, 375804, 412070, 573382, 573382],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(201, 203, 207, 0.2)",
+            ],
+          },
+        ],
+      },
+      teuShow: true,
+      shareCraneWorkHourShow: true,
+      yardCraneWorkHourShow: true,
+    };
+  },
   methods: {
     completed() {
       console.log("yes!");
